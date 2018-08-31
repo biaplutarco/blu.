@@ -18,20 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c0C-or-Sb0">
-                                <rect key="frame" x="0.0" y="253" width="375" height="414"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todayCell" rowHeight="93" id="RZS-4k-SCa">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="93"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RZS-4k-SCa" id="EY9-RA-Dpx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MG1-az-iQI" customClass="CustomSegmentedControl" customModule="THEAPP2_0" customModuleProvider="target">
                                 <rect key="frame" x="22" y="143" width="331" height="29"/>
                                 <constraints>
@@ -52,12 +38,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MG1-az-iQI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="79" id="1Od-8Y-Ybk"/>
-                            <constraint firstItem="c0C-or-Sb0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7zg-Yz-nKq"/>
-                            <constraint firstItem="c0C-or-Sb0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RWc-4G-ebv"/>
                             <constraint firstItem="MG1-az-iQI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="RyL-TA-zCR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MG1-az-iQI" secondAttribute="trailing" constant="22" id="SHO-lc-0fF"/>
-                            <constraint firstItem="c0C-or-Sb0" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="hwa-0r-Ayx"/>
-                            <constraint firstItem="c0C-or-Sb0" firstAttribute="top" secondItem="MG1-az-iQI" secondAttribute="bottom" constant="82" id="yxV-ff-8FB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -74,9 +56,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="c0C-or-Sb0" id="24b-BT-dt6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

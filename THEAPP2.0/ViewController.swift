@@ -10,18 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentControl: CustomSegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
         
         print(DBManager.fetchAllItens())
         
-        tableView.register(UINib.init(nibName: "TodayTableViewCell", bundle: nil), forCellReuseIdentifier: "todayCell")
         //tableView.register(UINib.init(nibName: "SectionHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "sectionHeadertCell")
         
         // Transparent navigation bar
@@ -43,30 +39,3 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DBManager.fetchAllItens().count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let item = DBManager.fetchAllItens()[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "todayCell", for: indexPath) as! TodayTableViewCell
-        
-        cell.nameLabel.text = item.name
-        cell.categoryLabel.text = item.category
-    
-        
-        return cell
-    }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeadertCell") as! SectionHeaderView
-//        header.backgroundColor = .white
-//        return header
-//    }
-}

@@ -11,6 +11,7 @@ import UserNotifications
 
 class ItemViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var taskSegmentedControl: CustomSegmentedControl!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var initialDateTextField: UITextField!
@@ -67,6 +68,11 @@ class ItemViewController: UIViewController {
         datePickerTime.datePickerMode = .time
         notificationTimeTextField.inputView = datePickerTime
         notificationTimeTextField.inputAccessoryView = accessoryToolbar
+        
+        collectionView.register(UINib.init(nibName: "AddItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HouseCategory")
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     @IBAction func saveItem(_ sender: Any) {
@@ -153,7 +159,7 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HouseCategory", for: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HouseCategory", for: indexPath) as! AddItemCollectionViewCell
         return cell
     }
 }

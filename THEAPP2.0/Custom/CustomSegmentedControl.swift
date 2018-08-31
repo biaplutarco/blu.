@@ -11,7 +11,7 @@ import UIKit
 class CustomSegmentedControl: UISegmentedControl {
     var sortedViews: [UIView]!
     var currentIndex: Int = 0
-    let highlightColor = UIColor.gray
+    let highlightColor = UIColor.darkGray
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -21,11 +21,15 @@ class CustomSegmentedControl: UISegmentedControl {
     private func configure() {
         sortedViews = self.subviews.sorted(by:{$0.frame.origin.x < $1.frame.origin.x})
         for view in sortedViews {
-            view.layer.cornerRadius = 15
+            view.layer.cornerRadius = 5
         }
         changeSelectedIndex(to: currentIndex)
+        
+        
+        
+        //self.backgroundColor = #colorLiteral(red: 0, green: 0.7254901961, blue: 0.7098039216, alpha: 1)
         self.tintColor = UIColor.clear
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 5
         self.clipsToBounds = true
         let unselectedAttributes = [NSAttributedStringKey.foregroundColor: highlightColor,
                                     NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18, weight: .regular)]
@@ -36,6 +40,6 @@ class CustomSegmentedControl: UISegmentedControl {
         sortedViews[currentIndex].backgroundColor = UIColor.clear
         currentIndex = newIndex
         self.selectedSegmentIndex = UISegmentedControlNoSegment
-        sortedViews[currentIndex].backgroundColor = highlightColor
+        sortedViews[currentIndex].backgroundColor = #colorLiteral(red: 0, green: 0.7254901961, blue: 0.7098039216, alpha: 1)
     }
 }
