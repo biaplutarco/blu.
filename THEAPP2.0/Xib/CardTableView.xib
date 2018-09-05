@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CardTableViewCell" customModule="TipsScreen" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="424" height="136"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vW9-Y8-Xpw" userLabel="CardView">
+                    <rect key="frame" x="24" y="12" width="376" height="112"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ItemName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v17-CU-NIG">
+                            <rect key="frame" x="12" y="12" width="66.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 dias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AM-qH-dUe">
+                            <rect key="frame" x="325.5" y="12" width="38.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGk-dQ-OiP">
+                            <rect key="frame" x="12" y="29" width="352" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="v17-CU-NIG" firstAttribute="top" secondItem="vW9-Y8-Xpw" secondAttribute="top" constant="12" id="2d4-xg-MMY"/>
+                        <constraint firstAttribute="trailing" secondItem="9AM-qH-dUe" secondAttribute="trailing" constant="12" id="3lS-eH-I6e"/>
+                        <constraint firstItem="ZGk-dQ-OiP" firstAttribute="top" secondItem="v17-CU-NIG" secondAttribute="bottom" id="9sR-MS-u2J"/>
+                        <constraint firstItem="ZGk-dQ-OiP" firstAttribute="leading" secondItem="vW9-Y8-Xpw" secondAttribute="leading" constant="12" id="Bv6-tQ-onx"/>
+                        <constraint firstItem="9AM-qH-dUe" firstAttribute="top" secondItem="vW9-Y8-Xpw" secondAttribute="top" constant="12" id="Fsn-eB-ntw"/>
+                        <constraint firstAttribute="trailing" secondItem="ZGk-dQ-OiP" secondAttribute="trailing" constant="12" id="GSM-wZ-yDK"/>
+                        <constraint firstItem="v17-CU-NIG" firstAttribute="leading" secondItem="vW9-Y8-Xpw" secondAttribute="leading" constant="12" id="LT0-ub-8Td"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZGk-dQ-OiP" secondAttribute="bottom" constant="8" id="cCE-cA-WCh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vW9-Y8-Xpw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0tJ-zl-QNa"/>
+                <constraint firstItem="vW9-Y8-Xpw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="4qc-g1-RDR"/>
+                <constraint firstItem="vW9-Y8-Xpw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="4tU-Fe-xt5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="vW9-Y8-Xpw" secondAttribute="bottom" constant="12" id="Vek-SC-aWa"/>
+                <constraint firstItem="vW9-Y8-Xpw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uoQ-Xj-0Tf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="cardView" destination="vW9-Y8-Xpw" id="EOE-07-dLg"/>
+                <outlet property="itemDescriptionLabel" destination="ZGk-dQ-OiP" id="j5k-o2-3nR"/>
+                <outlet property="itemNameLabel" destination="v17-CU-NIG" id="YQe-4u-sfT"/>
+                <outlet property="itemTimeLabel" destination="9AM-qH-dUe" id="652-m1-cbE"/>
+            </connections>
+            <point key="canvasLocation" x="58" y="-185"/>
+        </view>
+    </objects>
+</document>

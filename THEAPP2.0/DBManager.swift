@@ -9,91 +9,99 @@
 import UIKit
 import CoreData
 
-class DBManager: NSObject {
-    static private func fetch(from: Date, to: Date) -> [Item] {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
-        do {
-            let results: [Item] = try AppDelegate.persistentContainer.viewContext.fetch(request) as! [Item]
-            return results.filter { (item) -> Bool in
-                if let date = item.finalDate {
-                    return date > from && date < to
-                }
-                return false
-            }
-        } catch {
-            return []
+class DBManager {
+    
+    static let shared = DBManager()
+    
+    let persistentContainer: NSPersistentContainer!
+    
+    init(container: NSPersistentContainer) {
+        self.persistentContainer = container
+        self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+    }
+    
+    convenience init() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Can not get shared app delegate")
         }
+        self.init(container: appDelegate.persistentContainer)
     }
     
-    static func refreshItem(item: Item) -> Bool {
-        guard let initialDate = item.initialDate,
-            let finalDate = item.finalDate else {
-            return false
-        }
-        let timeFrame = finalDate.timeIntervalSince(initialDate)
-        item.initialDate = finalDate
-        item.finalDate = item.finalDate?.addingTimeInterval(timeFrame)
-        item.isDone = false
-        do {
-            try DBManager.save()
-            return true
-        } catch {
-            return false
-        }
+    func save() throws {
+        try persistentContainer.viewContext.save()
     }
     
-    static func save() throws {
-        try AppDelegate.persistentContainer.viewContext.save()
+    func delete(item: Item) {
+        persistentContainer.viewContext.delete(item)
+        try! save()
     }
     
-    static func delete(item: Item) {
-        AppDelegate.persistentContainer.viewContext.delete(item)
-    }
-    
-    static func insertItem(name: String, initialDate: Date, finalDate: Date, category: HouseCategory) -> Bool {
-        let object = NSEntityDescription.insertNewObject(forEntityName: "Item", into: AppDelegate.persistentContainer.viewContext) as! Item
+    @discardableResult
+    func insertItem(name: String, initialDate: Date, finalDate: Date, category: HouseCategory) -> Item? {
+        let object = NSEntityDescription.insertNewObject(forEntityName: "Item", into: persistentContainer.viewContext) as! Item
         object.name = name
         object.initialDate = initialDate
         object.finalDate = finalDate
         object.category = category.rawValue
         object.isDone = false
         do {
-            try DBManager.save()
+            try save()
+            return object
+        } catch {
+            return nil
+        }
+    }
+    
+    @discardableResult
+    func refreshItem(item: Item) -> Bool {
+        guard let initialDate = item.initialDate,
+            let finalDate = item.finalDate else {
+            return false
+        }
+        let timeFrame = finalDate.timeIntervalSince(initialDate)
+        item.initialDate = Date()
+        item.finalDate = item.initialDate?.addingTimeInterval(timeFrame)
+        item.isDone = false
+        do {
+            try save()
             return true
         } catch {
             return false
         }
     }
     
-    static func fetchAllItens() -> [Item] {
-        return fetch(from: Date.distantPast, to: Date.distantFuture)
+    func fetchAllItens() -> [Item] {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        let results = try? persistentContainer.viewContext.fetch(request)
+        return results!
     }
     
-    static func fetchItensExpiringToday() -> [Item] {
-        let all = fetch(from: Date.distantPast, to: Date.distantFuture)
-        return filterSameDay(itens: all, date: Date())
-//        return fetch(from: Date(timeIntervalSinceNow: -86400), to: Date.init(timeIntervalSinceNow: 0))
+    func fetchItensExpiringToday() -> [Item] {
+        let all = fetchAllItens()
+        let today = Calendar.current.date(bySettingHour: 0, minute: 00, second: 0, of: Date())!
+        return filterSameDay(itens: all, date: today)
     }
     
-    static func fetchItensExpiringThisWeek() -> [Item] {
-        let all = fetch(from: Date.distantPast, to: Date.distantFuture)
-        return filterSameWeek(itens: all, date: Date())
-//        return fetch(from: Date(timeIntervalSinceNow: -604800), to: Date(timeIntervalSinceNow: -86400))
+    func fetchItensExpiringThisWeek() -> [Item] {
+        let all = fetchAllItens()
+        let today = Calendar.current.date(bySettingHour: 0, minute: 00, second: 0, of: Date())!
+        return filterSameWeek(itens: all, date: today)
     }
     
-    static func fetchItensExpiringThisMonth() -> [Item] {
-        let all = fetch(from: Date.distantPast, to: Date.distantFuture)
-        return filterSameMonth(itens: all, date: Date())
-//        return fetch(from: Date(timeIntervalSinceNow: -2592000), to: Date(timeIntervalSinceNow: -604800))
+    func fetchItensExpiringThisMonth() -> [Item] {
+        let all = fetchAllItens()
+        let today = Calendar.current.date(bySettingHour: 0, minute: 00, second: 0, of: Date())!
+        return filterSameMonth(itens: all, date: today)
     }
     
-    static func fetchItensExpiringAfterThisMonth() -> [Item] {
-        let all = fetch(from: Date.distantPast, to: Date.distantFuture)
-        return filterAfter(itens: all, date: Date())
-//        return fetch(from: Date.distantPast, to: Date(timeIntervalSinceNow: -2592000))
+    func fetchItensExpiringAfterThisMonth() -> [Item] {
+        let all = fetchAllItens()
+        let today = Calendar.current.date(bySettingHour: 0, minute: 00, second: 0, of: Date())!
+        return filterAfter(itens: all, date: today)
     }
     
-    static func filterSameDay(itens: [Item], date: Date) -> [Item] {
+    func filterSameDay(itens: [Item], date: Date) -> [Item] {
+        
         
         return itens.filter { (item) -> Bool in
             
@@ -101,7 +109,7 @@ class DBManager: NSObject {
             
             let days = components.day
             
-            if days! == 0 {
+            if days! <= 0 {
                 return true
             }
             return false
@@ -109,9 +117,9 @@ class DBManager: NSObject {
         
     }
     
-    static func filterSameWeek(itens: [Item], date: Date) -> [Item] {
+    func filterSameWeek(itens: [Item], date: Date) -> [Item] {
 
-            return itens.filter { (item) -> Bool in
+        return itens.filter { (item) -> Bool in
                 
                 let components = Calendar.current.dateComponents([.day], from: date, to: item.finalDate!)
                 
@@ -125,7 +133,7 @@ class DBManager: NSObject {
         
     }
     
-    static func filterSameMonth(itens: [Item], date: Date) -> [Item] {
+    func filterSameMonth(itens: [Item], date: Date) -> [Item] {
         
         return itens.filter { (item) -> Bool in
             
@@ -140,7 +148,7 @@ class DBManager: NSObject {
         }
     }
     
-    static func filterAfter(itens: [Item], date: Date) -> [Item] {
+    func filterAfter(itens: [Item], date: Date) -> [Item] {
         
         return itens.filter { (item) -> Bool in
             
@@ -153,6 +161,14 @@ class DBManager: NSObject {
             }
             return false
         }
+    }
+    
+    
+    func countItens(ofType type:HouseCategory) -> Int {
+        let items = fetchAllItens()
+        return (items.filter { item in
+            return item.category == type.rawValue
+        }).count
     }
     
 }

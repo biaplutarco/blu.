@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bedroom</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Lençóis e fronhas</string>
+			<key>time</key>
+			<string>7 dias</string>
+			<key>description</key>
+			<string>As  roupas de cama podem tornar-se reservatórios de células humanas, bactérias  excreções corporais. Ambientes quentes e úmidos também são criadouros ideais para os ácaros e as fezes destes podem desencadear reações alérgicas. </string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Pijama</string>
+			<key>time</key>
+			<string>2 dias</string>
+			<key>description</key>
+			<string>Muita gente usa seus pijamas vários dias sem trocá-los. Embora essas roupas só sejam usadas para dormir quando, geralmente, já tomamos banho, durante a noite nosso metabolismo não para e por isso temos desprendimento de células da pele e suor que “alimentam” microrganismos. Não é higiênico usar pijamas por muitas noites seguidas.</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Travesseiro</string>
+			<key>time</key>
+			<string>6 meses</string>
+			<key>description</key>
+			<string>(Pesquisar uma descrição legal)</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Colchão</string>
+			<key>time</key>
+			<string>6 meses</string>
+			<key>description</key>
+			<string>As fezes dos ácaros e a poeira acumulados no colchão podem causar alergia e asma. Além disso, bactérias mais resistentes que levam à febre e diarréia podem se alojar nos materiais e sobreviver a até quatro semanas. O ideal é deixar o colchão &quot;respirar&quot; ao ar livre por um tempo colocando-o no sol e virá-lo de lado a cada seis meses.</string>
+		</dict>
+	</array>
+	<key>Living Room</key>
+	<array/>
+	<key>Kitchen</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Esponja</string>
+			<key>time</key>
+			<string>7 dias</string>
+			<key>description</key>
+			<string>Nada de deixar esponjas fazendo aniversário na pia! Elas precisam ser trocadas semanalmente. Além disso, devem ser limpas diariamente. A sugestão é fervê-las de 3 a 5 minutos ou colocá-la no micro-ondas por 2 minutos</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Pano de prato</string>
+			<key>time</key>
+			<string>7 dias</string>
+			<key>description</key>
+			<string>Um pano de prato usado o dia todo em uma cozinha abriga cerca de quatro bilhões de germes vivos, ou seja, seis vezes mais que as bactérias do vaso sanitário.</string>
+		</dict>
+	</array>
+	<key>Bathroom</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Toalha de banho</string>
+			<key>time</key>
+			<string>3 dias</string>
+			<key>description</key>
+			<string>Após o uso, elas devem ser estendidas. As bactérias precisam de água para sobreviver, portanto, é importante que ela esteja sempre aberta após o uso, para que seque rápido. Nunca deve ser guardada úmida. Outro fator importante para garantir toalhas sempre limpas é lavá-las com água a 60º C por cerca de trinta minutos. A lavagem com água em temperatura normal não mata as bactérias. O ideal também é secá-las ao sol e usar ferro de passar.</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Toalha de mão/rosto</string>
+			<key>time</key>
+			<string>1 dia</string>
+			<key>description</key>
+			<string>As toalhas usadas para secar o rosto e as mãos devem ser trocadas diariamente. É preciso ter cuidado especial com elas, pois podem servir de meio para transmitir doenças, como conjuntivite.</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Escova de dentes</string>
+			<key>time</key>
+			<string>3 meses</string>
+			<key>description</key>
+			<string>Muitos profissionais da odontologia recomendam trocar a escova de dentes a cada três meses, e a Associação Dental dos Estados Unidos recomenda que seja a cada três ou quatro meses, aproximadamente, ou antes se as cerdas estiverem desfiadas.</string>
+		</dict>
+	</array>
+</dict>
+</plist>
